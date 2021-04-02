@@ -9,22 +9,22 @@ from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
 from azureml.core.run import Run
 from azureml.data.dataset_factory import TabularDatasetFactory
+from azureml.core.dataset import Dataset
+from azureml.core import Model
 
 # TODO: Create TabularDataset using TabularDatasetFactory
 # Data is located at:
 # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
-FileLink = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
-ds = TabularDatasetFactory.from_delimited_files(path=FileLink)
+#ds = ### YOUR CODE HERE ###
 
-x, y = clean_data(ds)
+#x, y = clean_data(ds)
 
 # TODO: Split data into train and test sets.
 
-### YOUR CODE HERE ###
-x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2)
+### YOUR CODE HERE ###a
 
-run = Run.get_context()
+#run = Run.get_context()
 
 def clean_data(data):
     # Dict for cleaning data
@@ -51,6 +51,15 @@ def clean_data(data):
     x_df["poutcome"] = x_df.poutcome.apply(lambda s: 1 if s == "success" else 0)
 
     y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
+    return x_df, y_df
+
+ds = TabularDatasetFactory.from_delimited_files("https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv")
+
+x, y = clean_data(ds)
+
+x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.2, random_state=49)
+
+run = Run.get_context()
     
 
 def main():
@@ -69,6 +78,9 @@ def main():
 
     accuracy = model.score(x_test, y_test)
     run.log("Accuracy", np.float(accuracy))
+
+    os.makedirs('outputs', exist_ok=True)
+    joblib.dump(model, 'outputs/model.joblib')
 
 if __name__ == '__main__':
     main()

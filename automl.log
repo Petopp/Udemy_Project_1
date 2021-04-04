@@ -1,0 +1,16 @@
+2021-04-04 18:15:56.762 - INFO - 14076 - azureml.train.automl.automlconfig._start_execution:206 - Submitting remote.
+2021-04-04 18:55:07.810 - INFO - 14076 - azureml.automl.runtime.distributed.utilities.horovod_initialized:58 - Horovod not found in current environment. Distribution via Horovod will be disabled.
+2021-04-04 18:55:12.576 - INFO - 14076 - azureml.train.automl.run._log_activity:55 - ActivityStarted: GetOutput
+2021-04-04 18:55:12.593 - INFO - 14076 - azureml.train.automl.run._log_activity:55 - ActivityStarted: GetOutput
+2021-04-04 18:55:12.602 - INFO - 14076 - azureml.train.automl.run._log_activity:55 - ActivityStarted: GetChildren
+2021-04-04 18:56:25.698 - INFO - 14076 - azureml.train.automl.run._log_activity:93 - ActivityCompleted: Activity=GetChildren, HowEnded=Success, Duration=73095.61[ms]
+2021-04-04 18:56:25.866 - INFO - 14076 - azureml.train.automl.run._log_activity:93 - ActivityCompleted: Activity=GetOutput, HowEnded=Success, Duration=73272.5[ms]
+2021-04-04 18:56:26.357 - INFO - 14076 - azureml.train.automl.run._log_activity:93 - ActivityCompleted: Activity=GetOutput, HowEnded=Success, Duration=73781.51[ms]
+2021-04-04 19:24:45.980 - INFO - 27323 - azureml.train.automl.automlconfig._start_execution:206 - Submitting remote.
+2021-04-04 20:08:36.467 - INFO - 27323 - azureml.automl.runtime.distributed.utilities.horovod_initialized:58 - Horovod not found in current environment. Distribution via Horovod will be disabled.
+2021-04-04 20:08:37.253 - INFO - 27323 - azureml.train.automl.run._log_activity:55 - ActivityStarted: GetOutput
+2021-04-04 20:08:37.274 - INFO - 27323 - azureml.train.automl.run._log_activity:55 - ActivityStarted: GetOutput
+2021-04-04 20:08:37.283 - INFO - 27323 - azureml.train.automl.run._log_activity:55 - ActivityStarted: GetChildren
+2021-04-04 20:10:02.913 - INFO - 27323 - azureml.train.automl.run._log_activity:93 - ActivityCompleted: Activity=GetChildren, HowEnded=Success, Duration=85630.38[ms]
+2021-04-04 20:10:03.111 - INFO - 27323 - azureml.train.automl.run._log_activity:93 - ActivityCompleted: Activity=GetOutput, HowEnded=Success, Duration=85836.92[ms]
+2021-04-04 20:10:03.501 - INFO - 27323 - azureml.train.automl.run._log_activity:93 - ActivityCompleted: Activity=GetOutput, HowEnded=Success, Duration=86248.08[ms]

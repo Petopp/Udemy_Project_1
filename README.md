@@ -45,7 +45,7 @@ train_data, test_data = train_test_split(full_data,test_size=0.28)
 
 
 ## AutoML
-I am have used in the AutoML option the task as "clasification" and primary metric as "accuracy" and iterations as 5 (for a quick test time, better is higher 40), 
+I am have used in the AutoML option the task as "clasification" and primary metric as "accuracy" and iterations as 5 (for a quick test time, better is higher 40 minutes), 
 the timeout for this final test was by 40 minutes. I think a longer time and more iterations, make better results.
 
 

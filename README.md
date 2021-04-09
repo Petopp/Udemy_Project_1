@@ -9,9 +9,9 @@ This model is then compared to an Azure AutoML run.
 This dataset contains data about individuals applying for bank loans. 
 The task we set out to accomplish here is to develop a model that, based on the information provided about each individual, predicts whether they will subscribe to a service.
 
-The accuracy in this test was by HyperDrive 91,1% and in the Azure AutoML 91,5% (XGBoostClassifier). 
+The accuracy in this test was by HyperDrive 91,1% and in the Azure AutoML 91,5% (MaxAbsScaler LightGBM). 
 This seems to be a small difference, but with the last test you get a higher accuracy if you let it calculate the data for a longer time (>40 minutes).
-**So can you say, the XGBoostClassifier is the best in this situation.**
+**So can you say, the MaxAbsScaler LightGBM  is the best in this situation.**
 
 
 ## Scikit-learn Pipeline
@@ -26,8 +26,10 @@ Following data download, a number of data cleaning steps are carried out includi
 
 Once the data has been prepared it is split into a training and test set. 
 A test set size of 28% of total entries was selected as a compromise between ensuring adequate representation in the test data and providing sufficient data for model training.
+Trials with a higher rate of test data did not produce a significant difference in the results of the accuracies.
 
-I am specified the parameter sampler in detail:
+I am specified the parameter sampler in detail, you can use other parameters to find for a small better results.
+In my test was this parameters good enogh for this project.
 ```
 ...
 ps = RandomParameterSampling({
@@ -41,12 +43,15 @@ ps = RandomParameterSampling({
 train_data, test_data = train_test_split(full_data,test_size=0.28)
 ...
 ```
-  
-
 
 ## AutoML
-I am have used in the AutoML option the task as "clasification" and primary metric as "accuracy" and iterations as 5 (for a quick test time, better is higher 40 minutes), 
-the timeout for this final test was by 40 minutes. I think a longer time and more iterations, make better results.
+I am have used in the AutoML option the task as "clasification" and primary metric as "accuracy" and iterations as 6 (for a quick test time, better is higher 60 minutes), 
+the timeout for this final test was by 60 minutes. I think a longer time and more iterations, make better results.
+
+I also set the option enable_early_stopping = True to automatically discard classifiers that will not give better results than already exist. This saves time and money during development. Because the machines do not calculate unnecessary things which are not needed in most cases.
+
+So that the calculations can be understood by other systems. The best result is stored in the onnx format.
+With the ONNX, AI developers can exchange models between different tools and choose the best combination of these tools for them
 
 
 ## Pipeline comparison
